@@ -21,9 +21,14 @@ public class MainActivity extends AppCompatActivity {
     public void sendMessage(View view) {
         //So stuff
         Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = editText.getText().toString();
-        intent.putExtra(MainActivity.EXTRA_MESSAGE, message);
+        //EditText editText = (EditText) findViewById(R.id.edit_message);
+        //String message = editText.getText().toString();
+        //intent.putExtra(MainActivity.EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
+
+    public void food_list(View view) {
+        Intent intent = new Intent(this, DisplayFoodList.class);
         startActivity(intent);
     }
 }

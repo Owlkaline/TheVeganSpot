@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:orientation="vertical"
+    android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <EditText android:id="@+id/edit_message"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_message" />
+
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/button_send"
+        android:text="@string/find_food"
+        android:onClick="food_list"/>
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/shopping_list"
+        android:onClick="sendMessage" />
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/button_info"
         android:onClick="sendMessage" />
 </LinearLayout>
 
