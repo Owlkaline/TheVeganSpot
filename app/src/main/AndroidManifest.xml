@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".DisplayMessageActivity" />
-        <activity android:name=".DisplayFoodList"></activity>
+        <activity android:name=".DisplayFoodList" />
+        <activity android:name=".LoadDatabse"></activity>
     </application>
 
 </manifest>

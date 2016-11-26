@@ -3,7 +3,11 @@
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
     <string name="find_food">Find Food</string>
-    <string name="test_food">BioCheese</string>
     <string name="button_info">About us</string>
     <string name="shopping_list">Shopping List</string>
+    <string name="loading">Loading... Please wait.</string>
+    <string name="search_food">Lookup food</string>
+    <string name="results">Results</string>
+
+    <string name="test_food">BioCheese</string>
 </resources>
