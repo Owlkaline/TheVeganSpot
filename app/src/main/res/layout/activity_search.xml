@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_search"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.akuma.ao.theveganspot.searchActivity">
+    <TextView
+        android:id="@+id/search_title"
+        android:text="@string/vegan_food"
+        android:textSize="30dp"
+        android:textColor="@color/green"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/all_food"
+        android:text="@string/all_food"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_title"
+        android:onClick="food_list"/>
+    <Button
+        android:id="@+id/by_brand"
+        android:text="@string/by_brand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/all_food"
+        android:onClick="brand_search"/>
+
+    <Button
+        android:text="@string/by_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/by_brand"
+        android:onClick="type_search"/>
+
+</RelativeLayout>

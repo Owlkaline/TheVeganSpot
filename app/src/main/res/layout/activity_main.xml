@@ -10,7 +10,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/find_food"
-        android:onClick="food_list"/>
+        android:onClick="search_food"/>
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"

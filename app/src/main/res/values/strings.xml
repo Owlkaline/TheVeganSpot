@@ -2,12 +2,21 @@
     <string name="app_name">TheVeganSpot</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
-    <string name="find_food">Find Food</string>
+    <string name="find_food">Discover Food</string>
     <string name="button_info">About us</string>
     <string name="shopping_list">Shopping List</string>
     <string name="loading">Loading... Please wait.</string>
     <string name="search_food">Lookup food</string>
     <string name="results">Results</string>
+    <string name="view_details">View details</string>
 
-    <string name="test_food">BioCheese</string>
+    <string name="brand_blank">Brand</string>
+    <string name="vegan_food">Vegan Food</string>
+
+    <string name="by_brand">Search by brand</string>
+    <string name="by_type">Search by type</string>
+
+    <string name="all_food">List all foods</string>
+
+    <string name="example_text">Example text</string>
 </resources>
