@@ -21,6 +21,7 @@
     <Button
         android:id="@+id/all_food"
         android:text="@string/all_food"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/search_title"
@@ -28,6 +29,7 @@
     <Button
         android:id="@+id/by_brand"
         android:text="@string/by_brand"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/all_food"
@@ -35,6 +37,7 @@
 
     <Button
         android:text="@string/by_type"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/by_brand"

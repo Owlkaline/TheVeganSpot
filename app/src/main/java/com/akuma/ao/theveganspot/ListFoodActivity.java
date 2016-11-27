@@ -53,7 +53,7 @@ public class ListFoodActivity extends AppCompatActivity {
 
 
         lv.setAdapter(new ListAdapter(this, R.layout.list_layout, data));
-        DBHandler db = new DBHandler(this);
+      /*  DBHandler db = new DBHandler(this);
 
         Log.d("Reading: ", "Reading all...");
         List<Food> foods = db.getAllFood();
@@ -67,7 +67,7 @@ public class ListFoodActivity extends AppCompatActivity {
         for (Brand brand : brands) {
             String log = "Id: " + brand.getId() + ",Name: " + brand.getName();
             Log.d("Food: : ", log);
-        }
+        }*/
         /*
 
         TextView textView = new TextView(this);

@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         db.addType(new Type(1, "Snacks"));
         db.addType(new Type(2, "Cheeses"));
         db.addType(new Type(3, "Chips and Dips"));
+        db.addType(new Type(4, "Spreads"));
 
         db.addBrand(new Brand(1, "MyLife"));
         db.addBrand(new Brand(2, "Coles"));
@@ -63,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
         db.addFood(new Food(2, 3, 3, "Hommus Dip"));
         db.addFood(new Food(3, 4, 3, "Salt and Vinegar chips"));
         db.addFood(new Food(4, 1, 2, "BioCheese - Cheddar"));
+        db.addFood(new Food(5, 1, 2, "BioCheese Slices"));
+        db.addFood(new Food(6, 1, 2, "BioCheese Slices - Cheddar"));
+        db.addFood(new Food(7, 1, 2, "BioCheese Shred - Cheddar"));
+        db.addFood(new Food(8, 1, 2, "BioCheese Shred - Pizza"));
+        db.addFood(new Food(9, 1, 4, "BioButtery"));
 
         db.close();
     }
