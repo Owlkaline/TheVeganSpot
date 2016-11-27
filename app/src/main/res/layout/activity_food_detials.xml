@@ -32,4 +32,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/brand_text"/>
 
+    <TextView
+        android:id="@+id/ingredients_text"
+        android:text="@string/brand_blank"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/type_text"/>
+
 </RelativeLayout>

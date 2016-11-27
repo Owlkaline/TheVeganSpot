@@ -25,6 +25,7 @@ public class DBHandler extends SQLiteOpenHelper {
     protected static final String KEY_BRAND_ID = "brand_id";
     protected static final String KEY_TYPE_ID = "type_id";
     protected static final String KEY_NAME = "name";
+    protected static final String KEY_INGREDIENTS = "ingredients";
 
     protected static final String TABLE_BRAND = "Brand";
     protected static final String TABLE_TYPE = "Type";
@@ -37,7 +38,8 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_FOOD_TABLE = "CREATE TABLE " + TABLE_FOOD + "(" + KEY_ID +
-                " INTEGER PRIMARY KEY," + KEY_BRAND_ID + " INTEGER, " + KEY_TYPE_ID + " INTEGER, " + KEY_NAME + " TEXT)";
+                " INTEGER PRIMARY KEY," + KEY_BRAND_ID + " INTEGER, " + KEY_TYPE_ID +
+                " INTEGER, " + KEY_NAME + " TEXT, " + KEY_INGREDIENTS + " TEXT)";
         String CREATE_BRAND_TABLE = "CREATE TABLE " + TABLE_BRAND + "(" + KEY_ID +
                 " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT)";
         String CREATE_TYPE_TABLE = "CREATE TABLE " + TABLE_TYPE + "(" + KEY_ID +
@@ -61,19 +63,20 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_NAME, food.getName());
         values.put(KEY_BRAND_ID, food.getBrand_id());
         values.put(KEY_TYPE_ID, food.getType_id());
+        values.put(KEY_INGREDIENTS, food.getIngredients());
         db.insert(TABLE_FOOD, null, values);
         db.close();
     }
 
     public Food getFood(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_FOOD, new String[] { KEY_ID, KEY_BRAND_ID, KEY_TYPE_ID, KEY_NAME }, KEY_ID + "=?",
+        Cursor cursor = db.query(TABLE_FOOD, new String[] { KEY_ID, KEY_BRAND_ID, KEY_TYPE_ID, KEY_NAME, KEY_INGREDIENTS }, KEY_ID + "=?",
                                  new String[] { String.valueOf(id) }, null, null, null, null);
         Food food = null;
         if(cursor != null && cursor.moveToFirst()) {
-            food = new Food(Integer.parseInt(cursor.getString(0)), Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor.getString(2)), cursor.getString(3));
+            food = new Food(Integer.parseInt(cursor.getString(0)), Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor.getString(2)), cursor.getString(3), cursor.getString(4));
         } else {
-            food = new Food(-1, -1, -1, "Food");
+            food = new Food(-1, -1, -1, "Food", "Nill");
         }
         cursor.close();
         return food;
@@ -93,6 +96,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 food.setBrand_id(Integer.parseInt(cursor.getString(1)));
                 food.setType_id(Integer.parseInt(cursor.getString(2)));
                 food.setName(cursor.getString(3));
+                food.setIngredients(cursor.getString(4));
                 foodList.add(food);
             } while (cursor.moveToNext());
         }
@@ -115,6 +119,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_NAME, food.getName());
         values.put(KEY_BRAND_ID, food.getBrand_id());
         values.put(KEY_TYPE_ID, food.getType_id());
+        values.put(KEY_INGREDIENTS, food.getIngredients());
         return db.update(TABLE_FOOD, values, KEY_ID + " = ?", new String[] { String.valueOf(food.getId()) });
     }
 
@@ -137,6 +142,7 @@ public class DBHandler extends SQLiteOpenHelper {
             food.setBrand_id(Integer.parseInt(cursor.getString(1)));
             food.setType_id(Integer.parseInt(cursor.getString(2)));
             food.setName(cursor.getString(3));
+            food.setIngredients(cursor.getString(4));
             cursor.close();
         } else {
             food = null;

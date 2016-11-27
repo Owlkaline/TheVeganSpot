@@ -58,28 +58,19 @@ public class MainActivity extends AppCompatActivity {
         db.addBrand(new Brand(3, "Deli Original"));
         db.addBrand(new Brand(4, "Sprinters"));
 
-        // new Food ( id, Brand, Type, Name )
-        db.addFood(new Food(0, 1, 2, "BioCheese"));
-        db.addFood(new Food(1, 2, 1, "Cracked Peppers"));
-        db.addFood(new Food(2, 3, 3, "Hommus Dip"));
-        db.addFood(new Food(3, 4, 3, "Salt and Vinegar chips"));
-        db.addFood(new Food(4, 1, 2, "BioCheese - Cheddar"));
-        db.addFood(new Food(5, 1, 2, "BioCheese Slices"));
-        db.addFood(new Food(6, 1, 2, "BioCheese Slices - Cheddar"));
-        db.addFood(new Food(7, 1, 2, "BioCheese Shred - Cheddar"));
-        db.addFood(new Food(8, 1, 2, "BioCheese Shred - Pizza"));
-        db.addFood(new Food(9, 1, 4, "BioButtery"));
+        // new Food ( id, Brand, Type, Name, Ingredients )
+        db.addFood(new Food(0, 1, 2, "BioCheese", "Water, Coconut Oil(non-Hydrogenated)(23%), Modified Starch (E1404, E1450), Starch, Sea Salt, Vegan Flavours, Olive Extract, Colour: B-Carotene."));
+        db.addFood(new Food(1, 2, 1, "Cracked Pepper - Water Crackers", "Wheat Flour, Palm Oil [Antioxidant(307)], Salt, Cracked Black Pepper (1%), Poppy Seeds, Raising Agent(500)."));
+        db.addFood(new Food(2, 3, 3, "Hommus Dip", "Chickpeas (47%), Water, Vegetable Oil, Tahini (Contains Sesame Seeds), Acidity Regulators (260, 330, 575), Salt, Garlic, Preservative(202)."));
+        db.addFood(new Food(3, 4, 3, "Salt and Vinegar chips", "Potatoes, Vegetable Oil, Acidicty Regulators(262, 330, 260), Mineral Salts(508, 340), Salt(1.5%), Corn Starch, Sugar, Maltodextrin, Natural Flavours."));
+        db.addFood(new Food(4, 1, 2, "BioCheese - Cheddar", "Water, Coconut Oil(non-Hydrogenated)(23%), Modified Starch (E1404, E1450), Starch, Sea Salt, Cheddar Vegan Flavours, Olive Extract, Colour: B-Carotene."));
+        db.addFood(new Food(5, 1, 2, "BioCheese Slices", "Water, Coconut Oil(non-Hydrogenated)(23%), Modified Starch (E1404, E1450), Starch, Sea Salt, Vegan Flavours, Olive Extract, Colour: B-Carotene."));
+        db.addFood(new Food(6, 1, 2, "BioCheese Slices - Cheddar", "Water, Coconut Oil(non-Hydrogenated)(23%), Modified Starch (E1404, E1450), Starch, Sea Salt, Cheddar Vegan Flavours, Olive Extract, Colour: B-Carotene."));
+        db.addFood(new Food(7, 1, 2, "BioCheese Shred - Cheddar", "Water, Coconut Oil(non-Hydrogenated)(23%), Modified Starch (E1404, E1450), Starch, Sea Salt, Anti-caking Agent (Tapioca Starch), Cheddar Vegan Flavours, Olive Extract, Colour: B-Carotene."));
+        db.addFood(new Food(8, 1, 2, "BioCheese Shred - Pizza", "Water, Coconut Oil(non-Hydrogenated)(21%), Modified Starch (E1404, E1450), Starch, Sea Salt, Anti-caking Agent (Tapioca Starch), Vegan Mozzarella Flavours, Olive Extract, Colour: B-Carotene."));
+        db.addFood(new Food(9, 1, 4, "BioButtery", "(All From Vegetable Sources) Canola Oil, Water, Coconut Oil, Salt Emulsifiers (471 [Non-palm], Sunflower Lecithn), Vegan Flavour, Vitamins D, E."));
 
         db.close();
-    }
-
-    public void sendMessage(View view) {
-        //So stuff
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        //EditText editText = (EditText) findViewById(R.id.edit_message);
-        //String message = editText.getText().toString();
-        //intent.putExtra(MainActivity.EXTRA_MESSAGE, message);
-        startActivity(intent);
     }
 
     public void search_food(View view) {
