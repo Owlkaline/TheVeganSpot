@@ -2,10 +2,12 @@ package com.akuma.ao.theveganspot;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.ButtonBarLayout;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,9 +18,25 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmChangeListener;
+import io.realm.RealmResults;
+
 import static android.R.id.list;
 
 public class ListFoodActivity extends AppCompatActivity {
+
+    protected Realm realm;
+
+    protected RealmResults<Food> allfood;
+
+    protected RealmChangeListener rL = new RealmChangeListener() {
+        @Override
+        public void onChange(Object element) {
+            //Refresh view
+          //  invalidateView();
+        }
+    };
 
     protected ArrayList<String> data = new ArrayList<String>();
 
@@ -31,6 +49,23 @@ public class ListFoodActivity extends AppCompatActivity {
         //   mydatabase.execSQL("CREATE TABLE IF NOT EXISTS Products(Product_ID INT, Name VARCHAR, Brand_ID INT, Ingredients VARCHAR, Description VARCHAR);");
         //  mydatabase.execSQL("INSERT INTO Products VALUES('1','BioCheese', 1, 'Pepper, orange, peels', 'A vegan cheese');");
         setContentView(R.layout.activity_list_food);
+
+        realm = Realm.getDefaultInstance();
+        realm.addChangeListener(rL);
+
+      /*  realm.beginTransaction();
+        Food food = realm.createObject(Food.class);
+        food.setId(1);
+        food.setBrand_id(1);
+        food.setType_id(2);
+        food.setName("BioCheese");
+        food.setIngredients("Water, Coconut Oil(non-Hydrogenated)(23%), Modified Starch (E1404, E1450), Starch, Sea Salt, Vegan Flavours, Olive Extract, Colour: B-Carotene.");
+        realm.commitTransaction();*/
+
+        allfood = realm.where(Food.class).findAll();
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         String typeOfSearch = intent.getStringExtra(searchActivity.SEARCHTYPE);
@@ -53,28 +88,6 @@ public class ListFoodActivity extends AppCompatActivity {
 
 
         lv.setAdapter(new ListAdapter(this, R.layout.list_layout, data));
-      /*  DBHandler db = new DBHandler(this);
-
-        Log.d("Reading: ", "Reading all...");
-        List<Food> foods = db.getAllFood();
-
-        for (Food food : foods) {
-            String log = "Id: " + food.getId() + ",Name: " + food.getName();
-            Log.d("Food: : ", log);
-        }
-        List<Brand> brands = db.getAllBrands();
-
-        for (Brand brand : brands) {
-            String log = "Id: " + brand.getId() + ",Name: " + brand.getName();
-            Log.d("Food: : ", log);
-        }*/
-        /*
-
-        TextView textView = new TextView(this);
-        textView.setTextSize(20);
-        textView.setText(msg);
-        ViewGroup layout = (ViewGroup) findViewById(R.id.activity_display_food_list);
-        layout.addView(textView);*/
 
     }
 
@@ -85,7 +98,7 @@ public class ListFoodActivity extends AppCompatActivity {
     }
 
     public void generateAllList() {
-        DBHandler db = new DBHandler(this);
+    /*    DBHandler db = new DBHandler(this);
         for (int i = 0; i < db.getFoodCount(); ++i) {
             Food food = db.getFood(i+1);
             data.add("" + food.getName());
@@ -94,7 +107,12 @@ public class ListFoodActivity extends AppCompatActivity {
 
         java.util.Collections.sort(data,icc);
 
-        db.close();
+        db.close();*/
+
+        for(int i = 0; i < allfood.size(); ++i) {
+            String name = allfood.get(i).getName();
+            data.add(name);
+        }
     }
 
     public void generateBrandList(int brand) {
@@ -131,5 +149,17 @@ public class ListFoodActivity extends AppCompatActivity {
 
         intent.putExtra(ListFoodActivity.FOOD_ID, i);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        realm.close();
     }
 }

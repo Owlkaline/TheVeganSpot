@@ -1,7 +1,9 @@
 package com.akuma.ao.theveganspot;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -15,6 +17,9 @@ public class TypeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         ListView lv = (ListView) findViewById(R.id.listview);
         generateList();
@@ -37,6 +42,12 @@ public class TypeActivity extends AppCompatActivity {
         java.util.Collections.sort(data,icc);
 
         db.close();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return super.onOptionsItemSelected(item);
     }
 }
 

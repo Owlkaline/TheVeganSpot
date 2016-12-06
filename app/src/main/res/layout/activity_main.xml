@@ -19,12 +19,11 @@
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/shopping_list"
-        android:onClick="sendMessage" />
+        android:text="@string/shopping_list" />
+
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/button_info"
-        android:onClick="sendMessage" />
+        android:text="@string/button_info" />
 </LinearLayout>
 

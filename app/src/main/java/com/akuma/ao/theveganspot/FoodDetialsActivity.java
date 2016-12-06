@@ -1,9 +1,11 @@
 package com.akuma.ao.theveganspot;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,6 +15,9 @@ public class FoodDetialsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_detials);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         String food_id = intent.getStringExtra(ListFoodActivity.FOOD_ID);
@@ -32,5 +37,11 @@ public class FoodDetialsActivity extends AppCompatActivity {
         txtbrand.setText("Brand: " + brand.getName());
         txtType.setText("Type: " + type.getType());
         txtIngredients.setText("Ingredients: \n" + food.getIngredients());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return super.onOptionsItemSelected(item);
     }
 }

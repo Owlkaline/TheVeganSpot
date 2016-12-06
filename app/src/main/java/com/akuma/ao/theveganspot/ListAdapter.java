@@ -2,15 +2,19 @@ package com.akuma.ao.theveganspot;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
+
+import static com.akuma.ao.theveganspot.R.mipmap.ic_launcher;
 
 /**
  * Created by akuma on 27/11/16.
@@ -21,6 +25,7 @@ public class ListAdapter extends ArrayAdapter<String> {
     public class ViewHolder {
         TextView name;
         Button btn;
+        ImageView image;
     }
 
     protected int layout;
@@ -40,6 +45,9 @@ public class ListAdapter extends ArrayAdapter<String> {
             convertView = inflater.inflate(layout, parent, false);
             final ViewHolder viewHolder = new ViewHolder();
             viewHolder.name = (TextView) convertView.findViewById(R.id.text_list);
+            viewHolder.image = (ImageView) convertView.findViewById(R.id.image_list);
+            if(position == 1)
+              viewHolder.image.setImageResource(R.mipmap.biocheese);
             viewHolder.btn = (Button) convertView.findViewById(R.id.button_list);
             viewHolder.btn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -53,6 +61,8 @@ public class ListAdapter extends ArrayAdapter<String> {
                     context.startActivity(intent);
                 }
             });
+
+
             convertView.setTag(viewHolder);
         }
         mainViewHolder = (ViewHolder) convertView.getTag();

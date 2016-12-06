@@ -1,11 +1,17 @@
 package com.akuma.ao.theveganspot;
 
+import io.realm.Realm;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by akuma on 26/11/16.
  */
 
-public class Food {
+public class Food extends RealmObject {
+    @PrimaryKey
     protected int id;
+
     protected int brand_id;
     protected int type_id;
     protected String name;
